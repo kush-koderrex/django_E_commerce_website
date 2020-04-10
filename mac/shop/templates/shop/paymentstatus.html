@@ -1,0 +1,32 @@
+{% extends 'shop/basic.html' %}
+{% block title%} Trendy Home Mart{% endblock %}
+{% block body %}
+<div class="container">
+
+
+
+    <!--{{response}}-->
+    <div class="col my-4">
+
+        <h2>Payment status regarding your order Id {{response.ORDERID}}</h2>
+        <h2>Thank you for shoping</h2>
+        <h1>Trendy Home Mart</h1>
+
+
+        {% if response.RESPCODE == '01' %}
+            <div class="alert alert-success">
+                <strong>ORDER SUCCESS!</strong> Your order Id is:<strong>{{response.ORDERID}}</strong> You should <a href="/shop/tracker/" class="alert-link">Click here to track the order</a>.
+            </div>
+        {% else %}
+            <div class="alert alert-danger">
+                <strong>ORDER FAILURE</strong><a href="/shop" class="alert-link">Sorry your order has not been placed</a>.
+            </div>
+        {% endif%}
+    </div>
+
+</div>
+{% endblock %}
+{% block js %}
+<script>
+</script>
+{% endblock %}
