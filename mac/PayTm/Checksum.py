@@ -3,8 +3,8 @@ import string
 import random
 import hashlib
 
-from Crypto.Cipher import AES
-
+# from Crypto.Cipher import AES # pip install pycryptodome
+from Cryptodome.Cipher import AES
 
 IV = "@@@@&&&&####$$$$"
 BLOCK_SIZE = 16
@@ -100,6 +100,7 @@ def __encode__(to_encode, iv, key):
     to_encode = __pad__(to_encode)
     # Encrypt
     c = AES.new(key.encode('utf-8'), AES.MODE_CBC, iv.encode('utf-8'))
+    # c = Crypto.new(key.encode('utf-8'), AES.MODE_CBC, iv.encode('utf-8'))
     to_encode = c.encrypt(to_encode.encode('utf-8'))
     # Encode
     to_encode = base64.b64encode(to_encode)
